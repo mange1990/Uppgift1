@@ -6,46 +6,60 @@ namespace Övning1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Välkomna till programmets huvudmeny. Navigera i huvudmenyen genom att ange en siffra");
-            Console.WriteLine("1. Ungdom eller pensionär");
-            Console.WriteLine("2. Räkna ut pris för ett helt sällskap");
-            Console.WriteLine("3. Skriv ut någonting tio gånger");
-            Console.WriteLine("4. Skriv ut tredje ordet i en mening");
-
-            bool quit = false;
-
-            while (!quit)
+            bool avsluta = false;
+            do
             {
-                int choice;
-
-                int.TryParse(Console.ReadLine(), out choice);
-                switch (choice)
+                Console.WriteLine("Välkomna till programmets huvudmeny. Navigera i huvudmenyen genom att ange en siffra");
+                Console.WriteLine("1. Ungdom eller pensionär");
+                Console.WriteLine("2. Räkna ut pris för ett helt sällskap");
+                Console.WriteLine("3. Skriv ut någonting tio gånger");
+                Console.WriteLine("4. Skriv ut tredje ordet i en mening");
+    
+                string meny_val = Console.ReadLine();
+                switch (meny_val)
                 {
-                    case 0:
-                        quit = true;
+                    case "0":
+                        avsluta = true;
                         break;
-                    case 1:
+                    case "1":
                         ungdom_pensionär();
                         break;
-                    case 2:
+                    case "2":
                         räkna_ut_pris();
                         break;
-                    case 3:
+                    case "3":
                         skriv_ut_text_tio_gånger();
                         break;
-                    case 4:
+                    case "4":
                         skriv_ut_tredje_ordet();
                         break;
                     default:
-                        Console.WriteLine("Felaktig input! Ange 0 eller 1");
+                        Console.WriteLine("Felaktig input! Ange 0 eller 1-4");
                         break;
                 }
-            }
+               
+            } while (!avsluta);
+
         }
 
         private static void skriv_ut_tredje_ordet()
         {
-            
+            bool över_tre_ord = false;
+            string tredje_ordet = "";
+            while (! över_tre_ord)
+            {
+                Console.WriteLine("Amge em mening med minst tre ord");
+                string mening = Console.ReadLine();
+
+                string[] mening_arr = mening.Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                
+                if (mening_arr.Length >= 3)
+                {
+                    tredje_ordet = mening_arr[2];
+                    över_tre_ord = true;
+                }
+            }
+            Console.WriteLine("Tredje ordet är: " + tredje_ordet);
         }
 
         private static void skriv_ut_text_tio_gånger()
@@ -57,6 +71,7 @@ namespace Övning1
             {
                 Console.Write(i + "." + text + ", ");
             }
+            Console.WriteLine();
         }
 
         private static void räkna_ut_pris()
