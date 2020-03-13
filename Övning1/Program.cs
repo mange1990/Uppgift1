@@ -87,7 +87,8 @@ namespace Övning1
                 int ålder;
                 int.TryParse(Console.ReadLine(), out ålder);
 
-                if (ålder < 20)
+             
+                else if (ålder < 20 && ålder != 0)
                 {
                     pris += 80;
                 }
