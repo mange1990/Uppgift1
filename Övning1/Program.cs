@@ -85,7 +85,7 @@ namespace Övning1
             {
                 Console.WriteLine("Ange ålder på person nummer " + i );
                 int ålder;
-                int.TryParse(Console.ReadLine(), out ålder);
+                bool success = int.TryParse(Console.ReadLine(), out ålder);
 
              
                 if (ålder < 20 && ålder != 0)
